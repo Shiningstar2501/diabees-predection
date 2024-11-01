@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            margin: 10px 0;
+            display: block;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+    <script>
+        function validateInput() {
+            const pregnancies = document.getElementById('pregnancies').value;
+            const glucose = document.getElementById('glucose').value;
+            const bloodPressure = document.getElementById('bloodPressure').value;
+            const skinThickness = document.getElementById('skinThickness').value;
+            const insulin = document.getElementById('insulin').value;
+            const bmi = document.getElementById('bmi').value;
+            const pedigree = document.getElementById('pedigree').value;
+            const age = document.getElementById('age').value;
+            const cholesterol = document.getElementById('cholesterol').value;
+            const triglycerides = document.getElementById('triglycerides').value;
+
+            if (pregnancies < 0 || pregnancies > 20) {
+                alert("Pregnancies must be between 0 and 20.");
+                return false;
+            }
+            if (glucose < 0 || glucose > 200) {
+                alert("Glucose must be between 0 and 200 mg/dL.");
+                return false;
+            }
+            if (bloodPressure < 0 || bloodPressure > 122) {
+                alert("Blood Pressure must be between 0 and 122 mm Hg.");
+                return false;
+            }
+            if (skinThickness < 0 || skinThickness > 99) {
+                alert("Skin Thickness must be between 0 and 99 mm.");
+                return false;
+            }
+            if (insulin < 0 || insulin > 900) {
+                alert("Insulin must be between 0 and 900.");
+                return false;
+            }
+            if (bmi < 0 || bmi > 60) {
+                alert("BMI must be between 0.0 and 60.0.");
+                return false;
+            }
+            if (pedigree < 0 || pedigree > 2.5) {
+                alert("Diabetes Pedigree Function must be between 0.0 and 2.5.");
+                return false;
+            }
+            if (age < 0 || age > 120) {
+                alert("Age must be between 0 and 120.");
+                return false;
+            }
+            if (cholesterol < 0 || cholesterol > 300) {
+                alert("Cholesterol must be between 0 and 300.");
+                return false;
+            }
+            if (triglycerides < 0 || triglycerides > 500) {
+                alert("Triglycerides must be between 0 and 500.");
+                return false;
+            }
+
+            return true; // All inputs are valid
+        }
+    </script>
+</head>
+<body>
+    <h1>Diabetes Prediction</h1>
+    <form method="POST" action="/predict" onsubmit="return validateInput()">
+        <label for="pregnancies">Pregnancies (0-20):</label>
+        <input type="number" id="pregnancies" name="pregnancies" required>
+
+        <label for="glucose">Glucose (0-200 mg/dL):</label>
+        <input type="number" id="glucose" name="glucose" required>
+
+        <label for="bloodPressure">Blood Pressure (0-122 mm Hg):</label>
+        <input type="number" id="bloodPressure" name="bloodPressure" required>
+
+        <label for="skinThickness">Skin Thickness (0-99 mm):</label>
+        <input type="number" id="skinThickness" name="skinThickness" required>
+
+        <label for="insulin">Insulin (0-900):</label>
+        <input type="number" id="insulin" name="insulin" required>
+
+        <label for="bmi">BMI (0.0-60.0):</label>
+        <input type="number" id="bmi" name="bmi" step="0.1" required>
+
+        <label for="pedigree">Diabetes Pedigree Function (0.0-2.5):</label>
+        <input type="number" id="pedigree" name="pedigree" step="0.01" required>
+
+        <label for="age">Age (0-120):</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="cholesterol">Cholesterol (0-300):</label>
+        <input type="number" id="cholesterol" name="cholesterol" required>
+
+        <label for="triglycerides">Triglycerides (0-500):</label>
+        <input type="number" id="triglycerides" name="triglycerides" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
